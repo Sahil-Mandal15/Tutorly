@@ -1,16 +1,33 @@
 package com.sahilm.tutorly.ui.home.activity
 
+import android.content.pm.ActivityInfo
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowInsetsController
+import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.OptIn
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.systemBars
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.media3.common.MediaItem
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.PlayerView
 import androidx.navigation.fragment.NavHostFragment
 import com.sahilm.tutorly.R
 import com.sahilm.tutorly.databinding.ActivityHomeBinding
+import com.sahilm.tutorly.ui.home.screen.feed.FeedPlayerListener
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class HomeActivity : AppCompatActivity(), FeedPlayerListener {
 
     private var _binding: ActivityHomeBinding? = null
     private val binding get() = _binding!!
@@ -59,6 +76,9 @@ class HomeActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    override fun onPlayVideo(videoUrl: String) {
     }
 
     override fun onDestroy() {

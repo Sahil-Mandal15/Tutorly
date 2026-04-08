@@ -82,14 +82,7 @@ class LoginActivity : AppCompatActivity() {
             TutorlyTheme { LoginScreen() }
         }
 
-        setupListeners()
         collectStates()
-    }
-
-    private fun setupListeners() {
-        binding.helloWorld.setOnClickListener {
-            viewModel.handleIntent(LoginIntent.GoogleSignIn)
-        }
     }
 
     private fun collectStates() {

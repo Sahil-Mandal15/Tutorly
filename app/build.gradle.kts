@@ -51,9 +51,13 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     // ExoPlayer (Media3)
-    implementation(libs.media3.exoplayer)
-    implementation(libs.media3.ui)
-    implementation(libs.media3.common)
+//    implementation(libs.media3.exoplayer)
+//    implementation(libs.media3.ui)
+//    implementation(libs.media3.common)
+    implementation("androidx.media3:media3-exoplayer:1.10.0")
+    implementation("androidx.media3:media3-exoplayer-dash:1.10.0")
+    implementation("androidx.media3:media3-ui:1.10.0")
+    implementation("androidx.media3:media3-ui-compose:1.10.0")
 
     // Firebase
     // Import the BoM for the Firebase platform
@@ -88,6 +92,10 @@ dependencies {
 
     // CircularImageView
     implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:5.0.5")
+    ksp("com.github.bumptech.glide:compiler:5.0.5")
 
     // Compose
     implementation(platform(libs.androidx.compose.bom))

@@ -1,4 +1,7 @@
 package com.sahilm.tutorly.domain.repository
 
-class FeedRepository {
+import com.sahilm.tutorly.domain.model.VideoDomainModel
+
+interface FeedRepository {
+    fun provideMockFeedVideoData(): List<VideoDomainModel>
 }
