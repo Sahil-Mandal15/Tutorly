@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme - Dark Mode -->
+    <style name="Base.Theme.Tutorly" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary Colors - Lighter variants for dark mode -->
+        <item name="colorPrimary">@color/primary_light</item>
+        <item name="colorOnPrimary">@color/primary_darker</item>
+        <item name="colorPrimaryContainer">@color/primary_dark</item>
+        <item name="colorOnPrimaryContainer">@color/primary_lighter</item>
+
+        <!-- Secondary Colors - Lighter variants for dark mode -->
+        <item name="colorSecondary">@color/secondary_light</item>
+        <item name="colorOnSecondary">@color/secondary_darker</item>
+        <item name="colorSecondaryContainer">@color/secondary_dark</item>
+        <item name="colorOnSecondaryContainer">@color/secondary_lighter</item>
+
+        <!-- Tertiary Colors - Lighter variants for dark mode -->
+        <item name="colorTertiary">@color/tertiary_light</item>
+        <item name="colorOnTertiary">@color/tertiary_darker</item>
+        <item name="colorTertiaryContainer">@color/tertiary_dark</item>
+        <item name="colorOnTertiaryContainer">@color/tertiary_lighter</item>
+
+        <!-- Error Colors - Optimized for dark mode -->
+        <item name="colorError">@color/dark_error</item>
+        <item name="colorOnError">@color/dark_bg</item>
+        <item name="colorErrorContainer">#7F1D1D</item>
+        <item name="colorOnErrorContainer">@color/dark_error</item>
+
+        <!-- Background & Surface - Dark variants -->
+        <item name="android:colorBackground">@color/dark_bg</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorOnSurface">@color/dark_text_primary</item>
+        <item name="colorSurfaceVariant">@color/dark_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/dark_text_secondary</item>
+
+        <!-- Outline -->
+        <item name="colorOutline">@color/dark_outline</item>
+        <item name="colorOutlineVariant">@color/dark_outline_variant</item>
+
+        <!-- Additional Theme Attributes -->
+        <item name="android:statusBarColor">@color/dark_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

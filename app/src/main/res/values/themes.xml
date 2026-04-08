@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme - Light Mode -->
+    <style name="Base.Theme.Tutorly" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_lighter</item>
+        <item name="colorOnPrimaryContainer">@color/primary_darker</item>
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/secondary_lighter</item>
+        <item name="colorOnSecondaryContainer">@color/secondary_darker</item>
+
+        <!-- Tertiary Colors -->
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">@color/tertiary_lighter</item>
+        <item name="colorOnTertiaryContainer">@color/tertiary_darker</item>
+
+        <!-- Error Colors -->
+        <item name="colorError">@color/light_error</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="colorErrorContainer">#FEE2E2</item>
+        <item name="colorOnErrorContainer">@color/light_error</item>
+
+        <!-- Background & Surface -->
+        <item name="android:colorBackground">@color/light_bg</item>
+        <item name="colorSurface">@color/light_surface</item>
+        <item name="colorOnSurface">@color/light_text_primary</item>
+        <item name="colorSurfaceVariant">@color/light_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/light_text_secondary</item>
+
+        <!-- Outline -->
+        <item name="colorOutline">@color/light_outline</item>
+        <item name="colorOutlineVariant">@color/light_outline_variant</item>
+
+        <!-- Additional Theme Attributes -->
+        <item name="android:statusBarColor">@color/light_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Tutorly" parent="Base.Theme.Tutorly" />
+</resources>

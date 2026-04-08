@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453502600225",
+    "project_id": "tutorly-6a2fd",
+    "storage_bucket": "tutorly-6a2fd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453502600225:android:4fded6e59295b92b72cf60",
+        "android_client_info": {
+          "package_name": "com.sahilm.tutorly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453502600225-d7j5io92pj35f9b5eqrvp5am6eeosc58.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBD33iM1LUMEvVDmoUWs5HsxZfZ2yK8wg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453502600225-d7j5io92pj35f9b5eqrvp5am6eeosc58.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
