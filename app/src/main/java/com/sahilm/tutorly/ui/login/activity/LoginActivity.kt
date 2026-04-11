@@ -1,9 +1,7 @@
 package com.sahilm.tutorly.ui.login.activity
 
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -36,23 +34,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import com.sahilm.tutorly.R
-import com.sahilm.tutorly.databinding.ActivityHomeBinding
 import com.sahilm.tutorly.databinding.ActivityLoginBinding
 import com.sahilm.tutorly.ui.home.activity.HomeActivity
 import com.sahilm.tutorly.ui.login.models.LoginIntent
@@ -61,7 +52,6 @@ import com.sahilm.tutorly.ui.theme.TutorlyTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -120,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
         val (animationPhase, setAnimationPhase) = remember { mutableStateOf(AnimationPhase.SPLASH) }
         val (showSignInButton, setShowSignInButton) = remember { mutableStateOf(false) }
 
-        LaunchedEffect(Unit) {
+        LaunchedEffect(Unit)  {
             setAnimationPhase(AnimationPhase.SPLASH)
 
             launch {

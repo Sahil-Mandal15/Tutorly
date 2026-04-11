@@ -86,6 +86,10 @@ class GoogleAuthUiHelper(
                     continuation.resume(ResultState.Error("Firebase sign-in cancelled"))
                 }
         }
+
+    suspend fun signOutUser() {
+        firebaseAuth.signOut()
+    }
 }
 
 const val TAG = "GoogleAuthUiHelper"

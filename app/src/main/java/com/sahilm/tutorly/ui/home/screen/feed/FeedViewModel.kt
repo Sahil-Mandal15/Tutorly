@@ -1,21 +1,28 @@
 package com.sahilm.tutorly.ui.home.screen.feed
 
+import android.content.Intent
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
 import com.sahilm.tutorly.domain.repository.FeedRepository
 import com.sahilm.tutorly.domain.repository.UserRepository
+import com.sahilm.tutorly.ui.helpers.GoogleAuthUiHelper
 import com.sahilm.tutorly.ui.home.screen.feed.adapter.DataModel
+import com.sahilm.tutorly.ui.home.screen.feed.models.SignOutIntent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class FeedViewModel @Inject constructor(
     private val feedRepository: FeedRepository,
     @Suppress("UNUSED_PARAMETER")
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val googleAuthUiHelper: GoogleAuthUiHelper
 ) : ViewModel() {
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -52,4 +59,18 @@ class FeedViewModel @Inject constructor(
                 emit(feedList)
             }
         }
+
+    fun handleUserIntent(intent: SignOutIntent) {
+        when(intent) {
+            is SignOutIntent.SignOutUser -> signOutUser()
+        }
+    }
+
+    private fun signOutUser() {
+        viewModelScope.launch {
+            userRepository.signOutUser()
+            googleAuthUiHelper.signOutUser()
+        }
+
+    }
 }

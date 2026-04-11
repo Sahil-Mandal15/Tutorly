@@ -3,4 +3,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="web_client_id">453502600225-d7j5io92pj35f9b5eqrvp5am6eeosc58.apps.googleusercontent.com</string>
+
+    <!-- Feed Design Strings -->
+    <string name="app_logo">App Logo</string>
+    <string name="more_actions">More Actions</string>
+    <string name="user_profile_picture">User Profile Picture</string>
+    <string name="welcome_message">Welcome Back</string>
+    <string name="user_name_placeholder">User Name</string>
+    <string name="video_thumbnail_desc">Video Thumbnail</string>
+    <string name="video_duration_placeholder">14:52</string>
+    <string name="video_title_placeholder">Mastering Android Development</string>
 </resources>

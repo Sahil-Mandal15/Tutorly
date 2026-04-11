@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Color Palette - Modern Blue (YouTube-inspired) -->
+    <color name="primary">#4A9EFF</color>
+    <color name="primary_light">#65B0FF</color>
+    <color name="primary_lighter">#7FBFFF</color>
+    <color name="primary_dark">#1E7FE3</color>
+    <color name="primary_darker">#065FD4</color>
+
+    <!-- Secondary Color Palette - Vibrant Red -->
+    <color name="secondary">#FF3333</color>
+    <color name="secondary_light">#FF5555</color>
+    <color name="secondary_lighter">#FF7777</color>
+    <color name="secondary_dark">#FF0000</color>
+    <color name="secondary_darker">#CC0000</color>
+
+    <!-- Tertiary Color Palette - Warm Amber -->
+    <color name="tertiary">#FFB733</color>
+    <color name="tertiary_light">#FFC966</color>
+    <color name="tertiary_lighter">#FFD699</color>
+    <color name="tertiary_dark">#FFA500</color>
+    <color name="tertiary_darker">#FF8C00</color>
+
+    <!-- Light Mode Neutral Colors - Dark Theme Mapping -->
+    <color name="light_bg">#0A0A0A</color>
+    <color name="light_surface">#181818</color>
+    <color name="light_surface_variant">#282828</color>
+    <color name="light_outline">#3F3F3F</color>
+    <color name="light_outline_variant">#565656</color>
+    <color name="light_text_primary">#FFFFFF</color>
+    <color name="light_text_secondary">#ABABAB</color>
+    <color name="light_text_tertiary">#808080</color>
+
+    <!-- Dark Mode Neutral Colors -->
+    <color name="dark_bg">#0A0A0A</color>
+    <color name="dark_surface">#181818</color>
+    <color name="dark_surface_variant">#282828</color>
+    <color name="dark_outline">#3F3F3F</color>
+    <color name="dark_outline_variant">#565656</color>
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#ABABAB</color>
+    <color name="dark_text_tertiary">#808080</color>
+
+    <!-- Semantic Colors - Light Mode -->
+    <color name="light_success">#22C55E</color>
+    <color name="light_warning">#FB923C</color>
+    <color name="light_error">#EF4444</color>
+    <color name="light_info">#38BDF8</color>
+
+    <!-- Semantic Colors - Dark Mode -->
+    <color name="dark_success">#22C55E</color>
+    <color name="dark_warning">#FB923C</color>
+    <color name="dark_error">#EF4444</color>
+    <color name="dark_info">#38BDF8</color>
+
+    <!-- Gray Scale - Professional Dark -->
+    <color name="gray_50">#0A0A0A</color>
+    <color name="gray_100">#181818</color>
+    <color name="gray_200">#282828</color>
+    <color name="gray_300">#3F3F3F</color>
+    <color name="gray_400">#565656</color>
+    <color name="gray_500">#808080</color>
+    <color name="gray_600">#ABABAB</color>
+    <color name="gray_700">#D4D4D4</color>
+    <color name="gray_800">#E4E4E4</color>
+    <color name="gray_900">#FFFFFF</color>
+
+    <!-- Legacy Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Color Palette - Elegant Indigo/Purple -->
-    <color name="primary">#6366F1</color>
-    <color name="primary_light">#818CF8</color>
-    <color name="primary_lighter">#A5B4FC</color>
-    <color name="primary_dark">#4F46E5</color>
-    <color name="primary_darker">#4338CA</color>
+    <!-- Primary Color Palette - Modern Blue (YouTube-inspired) -->
+    <color name="primary">#065FD4</color>
+    <color name="primary_light">#1E7FE3</color>
+    <color name="primary_lighter">#4A9EFF</color>
+    <color name="primary_dark">#0052A3</color>
+    <color name="primary_darker">#003D7A</color>
 
-    <!-- Secondary Color Palette - Fresh Green -->
-    <color name="secondary">#10B981</color>
-    <color name="secondary_light">#34D399</color>
-    <color name="secondary_lighter">#6EE7B7</color>
-    <color name="secondary_dark">#059669</color>
-    <color name="secondary_darker">#047857</color>
+    <!-- Secondary Color Palette - Vibrant Red -->
+    <color name="secondary">#FF0000</color>
+    <color name="secondary_light">#FF3333</color>
+    <color name="secondary_lighter">#FF6666</color>
+    <color name="secondary_dark">#CC0000</color>
+    <color name="secondary_darker">#990000</color>
 
     <!-- Tertiary Color Palette - Warm Amber -->
-    <color name="tertiary">#F59E0B</color>
-    <color name="tertiary_light">#FBBF24</color>
-    <color name="tertiary_lighter">#FCD34D</color>
-    <color name="tertiary_dark">#D97706</color>
-    <color name="tertiary_darker">#B45309</color>
+    <color name="tertiary">#FFA500</color>
+    <color name="tertiary_light">#FFB733</color>
+    <color name="tertiary_lighter">#FFC966</color>
+    <color name="tertiary_dark">#FF8C00</color>
+    <color name="tertiary_darker">#E67E22</color>
 
-    <!-- Light Mode Neutral Colors -->
-    <color name="light_bg">#FAFAFA</color>
+    <!-- Light Mode Neutral Colors - Clean White Background -->
+    <color name="light_bg">#F9FAFB</color>
     <color name="light_surface">#FFFFFF</color>
     <color name="light_surface_variant">#F3F4F6</color>
     <color name="light_outline">#E5E7EB</color>
     <color name="light_outline_variant">#D1D5DB</color>
-    <color name="light_text_primary">#1F2937</color>
+    <color name="light_text_primary">#111827</color>
     <color name="light_text_secondary">#6B7280</color>
     <color name="light_text_tertiary">#9CA3AF</color>
 
-    <!-- Dark Mode Neutral Colors -->
-    <color name="dark_bg">#0F172A</color>
-    <color name="dark_surface">#1E293B</color>
-    <color name="dark_surface_variant">#334155</color>
-    <color name="dark_outline">#475569</color>
-    <color name="dark_outline_variant">#64748B</color>
-    <color name="dark_text_primary">#F1F5F9</color>
-    <color name="dark_text_secondary">#CBD5E1</color>
-    <color name="dark_text_tertiary">#94A3B8</color>
+    <!-- Dark Mode Neutral Colors - True Black Background -->
+    <color name="dark_bg">#0A0A0A</color>
+    <color name="dark_surface">#181818</color>
+    <color name="dark_surface_variant">#282828</color>
+    <color name="dark_outline">#3F3F3F</color>
+    <color name="dark_outline_variant">#565656</color>
+    <color name="dark_text_primary">#FFFFFF</color>
+    <color name="dark_text_secondary">#ABABAB</color>
+    <color name="dark_text_tertiary">#808080</color>
 
     <!-- Semantic Colors - Light Mode -->
-    <color name="light_success">#10B981</color>
-    <color name="light_warning">#F59E0B</color>
-    <color name="light_error">#EF4444</color>
-    <color name="light_info">#3B82F6</color>
+    <color name="light_success">#16A34A</color>
+    <color name="light_warning">#EA8C00</color>
+    <color name="light_error">#DC2626</color>
+    <color name="light_info">#0284C7</color>
 
     <!-- Semantic Colors - Dark Mode -->
-    <color name="dark_success">#34D399</color>
-    <color name="dark_warning">#FBBF24</color>
-    <color name="dark_error">#FCA5A5</color>
-    <color name="dark_info">#60A5FA</color>
+    <color name="dark_success">#22C55E</color>
+    <color name="dark_warning">#FB923C</color>
+    <color name="dark_error">#EF4444</color>
+    <color name="dark_info">#38BDF8</color>
 
-    <!-- Gray Scale - Neutral -->
+    <!-- Gray Scale - Professional -->
     <color name="gray_50">#F9FAFB</color>
     <color name="gray_100">#F3F4F6</color>
     <color name="gray_200">#E5E7EB</color>

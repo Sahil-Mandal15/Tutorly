@@ -38,4 +38,8 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun clearUserData() {
         dataStore.edit { it.clear() }
     }
+
+    override suspend fun signOutUser() {
+        dataStore.edit { it.clear() }
+    }
 }

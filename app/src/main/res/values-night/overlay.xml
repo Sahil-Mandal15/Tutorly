@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark overlay for dark mode - stronger opacity -->
+    <color name="overlay_dark_light">#80000000</color>
+    <color name="overlay_dark_dark">#CC000000</color>
+    <color name="transparent_white">#80FFFFFF</color>
+</resources>
+
+

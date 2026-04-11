@@ -13,4 +13,5 @@ interface UserRepository {
     fun getUserData(): Flow<UserData?>
 
     suspend fun clearUserData()
+    suspend fun signOutUser()
 }

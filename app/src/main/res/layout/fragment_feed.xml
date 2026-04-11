@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:background="?android:attr/colorBackground"
     tools:context=".ui.home.screen.feed.FeedFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -11,6 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        tools:listitem="@layout/item_feed_video"/>
+        android:paddingTop="4dp"
+        android:overScrollMode="never"
+        android:scrollbarStyle="insideOverlay"
+        tools:listitem="@layout/item_feed_video" />
 
 </FrameLayout>

@@ -3,21 +3,23 @@ package com.sahilm.tutorly.ui.home.activity
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
+import android.view.WindowInsets
 import android.view.WindowInsetsController
-import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
-import android.widget.FrameLayout
 import android.widget.ImageButton
+import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.OptIn
-import androidx.appcompat.app.AlertDialog
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.systemBars
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.media3.common.MediaItem
-import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import androidx.navigation.fragment.NavHostFragment
@@ -32,14 +34,36 @@ class HomeActivity : AppCompatActivity(), FeedPlayerListener {
     private var _binding: ActivityHomeBinding? = null
     private val binding get() = _binding!!
 
+    private var _exoPlayer: ExoPlayer? = null
+    private val exoPlayer get() = _exoPlayer!!
+
+    private val isPlayerVisible = mutableStateOf(false)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         _binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         setupFragmentContainerView()
+        setupPlayer()
+
+        // Set Compose content
+        setContent {
+            ActivityContent()
+        }
+    }
+
+    @Composable
+    fun ActivityContent() {
+        if (isPlayerVisible.value) {
+            ExoPlayerUI()
+        } else {
+            AndroidView(
+                factory = { binding.root },
+                modifier = Modifier.fillMaxSize()
+            )
+        }
     }
 
     private fun setupFragmentContainerView() {
@@ -78,7 +102,72 @@ class HomeActivity : AppCompatActivity(), FeedPlayerListener {
         }
     }
 
+    private fun setupPlayer() {
+        _exoPlayer = ExoPlayer.Builder(this).build()
+    }
+
     override fun onPlayVideo(videoUrl: String) {
+        exoPlayer.setMediaItem(
+            MediaItem.fromUri(videoUrl)
+        )
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        exoPlayer.prepare()
+        exoPlayer.play()
+        isPlayerVisible.value = true
+
+        // Hide system UI (status bar and navigation bar)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val controller = window.insetsController
+            if (controller != null) {
+                controller.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+                controller.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+        }
+    }
+
+    private fun closePlayer() {
+        isPlayerVisible.value = false
+        exoPlayer.stop()
+        exoPlayer.clearMediaItems()
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        _exoPlayer = null
+
+        // Show system UI (status bar and navigation bar)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val controller = window.insetsController
+            if (controller != null) {
+                controller.show(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+            }
+        }
+    }
+
+    @Composable
+    fun ExoPlayerUI() {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+        ) {
+            AndroidView(
+                factory = { context ->
+                    PlayerView(context).apply {
+                        player = exoPlayer
+                        useController = true
+                    }
+                },
+                modifier = Modifier.fillMaxSize()
+            )
+
+            // Handle back press to close player
+            LaunchedEffect(Unit) {
+                val callback = object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        closePlayer()
+                    }
+                }
+                onBackPressedDispatcher.addCallback(this@HomeActivity, callback)
+            }
+        }
     }
 
     override fun onDestroy() {
