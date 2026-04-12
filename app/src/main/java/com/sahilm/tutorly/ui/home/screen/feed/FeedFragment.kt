@@ -34,7 +34,7 @@ class FeedFragment : Fragment(), FeedItemClickListener {
 
     private val viewModel: FeedViewModel by viewModels()
 
-    private lateinit var feedAdapter: FeedAdapter
+    private var feedAdapter: FeedAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,7 +77,7 @@ class FeedFragment : Fragment(), FeedItemClickListener {
     private fun loadFeedData() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.feedDataFlow.collectLatest { feedList ->
-                feedAdapter.submitList(feedList)
+                feedAdapter?.submitList(feedList)
             }
         }
     }

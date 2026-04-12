@@ -49,6 +49,8 @@ import com.sahilm.tutorly.ui.home.activity.HomeActivity
 import com.sahilm.tutorly.ui.login.models.LoginIntent
 import com.sahilm.tutorly.ui.login.models.LoginState
 import com.sahilm.tutorly.ui.theme.TutorlyTheme
+import com.sahilm.tutorly.ui.utils.AnimationConstants
+import com.sahilm.tutorly.ui.utils.UIConstants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -103,9 +105,9 @@ class LoginActivity : AppCompatActivity() {
         val loginState by viewModel.loginState.collectAsState()
         val userExists by viewModel.userExists.collectAsState()
 
-        val scaleAnimation = remember { Animatable(0.5f) }
-        val logoOffsetAnimation = remember { Animatable(0f) }
-        val buttonAlphaAnimation = remember { Animatable(0f) }
+        val scaleAnimation = remember { Animatable(AnimationConstants.LOGIN_SPLASH_INITIAL_SCALE) }
+        val logoOffsetAnimation = remember { Animatable(AnimationConstants.LOGIN_LOGO_INITIAL_OFFSET) }
+        val buttonAlphaAnimation = remember { Animatable(AnimationConstants.LOGIN_BUTTON_INITIAL_ALPHA) }
 
         val (animationPhase, setAnimationPhase) = remember { mutableStateOf(AnimationPhase.SPLASH) }
         val (showSignInButton, setShowSignInButton) = remember { mutableStateOf(false) }
@@ -115,8 +117,8 @@ class LoginActivity : AppCompatActivity() {
 
             launch {
                 scaleAnimation.animateTo(
-                    targetValue = 3.2f,
-                    animationSpec = tween(1600)
+                    targetValue = AnimationConstants.LOGIN_SPLASH_TARGET_SCALE,
+                    animationSpec = tween(AnimationConstants.LOGIN_SPLASH_ANIMATION_DURATION_MS)
                 )
             }
 
@@ -127,7 +129,7 @@ class LoginActivity : AppCompatActivity() {
 
         LaunchedEffect(userExists) {
             if (userExists != null) {
-                delay(1500)
+                delay(AnimationConstants.LOGIN_SPLASH_TO_LOGIN_DELAY_MS.toLong())
                 if (userExists == true) {
                     navigateToHome()
                 } else {
@@ -135,15 +137,15 @@ class LoginActivity : AppCompatActivity() {
 
                     launch {
                         logoOffsetAnimation.animateTo(
-                            targetValue = 1f,
-                            animationSpec = tween(800)
+                            targetValue = AnimationConstants.LOGIN_LOGO_ANIMATION_TARGET,
+                            animationSpec = tween(AnimationConstants.LOGIN_LOGO_ANIMATION_DURATION_MS)
                         )
                     }
 
                     launch {
                         buttonAlphaAnimation.animateTo(
-                            targetValue = 1f,
-                            animationSpec = tween(800)
+                            targetValue = AnimationConstants.LOGIN_LOGO_ANIMATION_TARGET,
+                            animationSpec = tween(AnimationConstants.LOGIN_BUTTON_ALPHA_ANIMATION_DURATION_MS)
                         )
                     }
 
@@ -164,30 +166,30 @@ class LoginActivity : AppCompatActivity() {
                         painter = painterResource(id = R.drawable.ic_launcher_foreground),
                         contentDescription = "App logo",
                         modifier = Modifier
-                            .size((80 * scaleAnimation.value).dp)
-                            .graphicsLayer(scaleX = 1f, scaleY = 1f)
+                            .size((UIConstants.LOGIN_LOGO_SIZE_DP * scaleAnimation.value).dp)
+                            .graphicsLayer(scaleX = AnimationConstants.LOGIN_GRAPHICS_LAYER_SCALE, scaleY = AnimationConstants.LOGIN_GRAPHICS_LAYER_SCALE)
                     )
                     Image(
                         painter = painterResource(id = R.drawable.app_name),
                         contentDescription = "App logo",
                         modifier = Modifier
-                            .size((80 * scaleAnimation.value).dp)
-                            .graphicsLayer(scaleX = 1f, scaleY = 1f)
+                            .size((UIConstants.LOGIN_LOGO_SIZE_DP * scaleAnimation.value).dp)
+                            .graphicsLayer(scaleX = AnimationConstants.LOGIN_GRAPHICS_LAYER_SCALE, scaleY = AnimationConstants.LOGIN_GRAPHICS_LAYER_SCALE)
                     )
                 }
                 AnimationPhase.LOGIN -> {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(16.dp),
+                            .padding(UIConstants.LOGIN_CONTENT_PADDING_DP.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        Spacer(modifier = Modifier.height(80.dp))
+                        Spacer(modifier = Modifier.height(UIConstants.LOGIN_TOP_SPACER_HEIGHT_DP.dp))
                         Image(
                             painter = painterResource(R.drawable.ic_launcher_foreground),
                             contentDescription = "App logo",
                             modifier = Modifier
-                                .size((80 * scaleAnimation.value).dp)
+                                .size((UIConstants.LOGIN_LOGO_SIZE_DP * scaleAnimation.value).dp)
                                 .graphicsLayer(
                                     translationY = -logoOffsetAnimation.value
                                 )
@@ -196,19 +198,19 @@ class LoginActivity : AppCompatActivity() {
                             painter = painterResource(R.drawable.app_name),
                             contentDescription = "App logo",
                             modifier = Modifier
-                                .size((80 * scaleAnimation.value).dp)
+                                .size((UIConstants.LOGIN_LOGO_SIZE_DP * scaleAnimation.value).dp)
                                 .graphicsLayer(
                                     translationY = -logoOffsetAnimation.value
                                 )
                         )
-                        Spacer(modifier = Modifier.padding(12.dp))
+                        Spacer(modifier = Modifier.padding(UIConstants.LOGIN_LOGO_SPACING_DP.dp))
 
                         if (showSignInButton) {
                             GoogleSignInButton(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(bottom = 32.dp)
-                                    .padding(14.dp)
+                                    .padding(bottom = UIConstants.LOGIN_BUTTON_BOTTOM_PADDING_DP.dp)
+                                    .padding(UIConstants.LOGIN_BUTTON_HORIZONTAL_PADDING_DP.dp)
                                     .graphicsLayer(alpha = buttonAlphaAnimation.value),
                                 onClick =
                                     {viewModel.handleIntent(LoginIntent.GoogleSignIn)},
@@ -230,8 +232,8 @@ class LoginActivity : AppCompatActivity() {
         Button(
             onClick = onClick,
             modifier = modifier
-                .height(50.dp)
-                .clip(RoundedCornerShape(12.dp)),
+                .height(UIConstants.LOGIN_BUTTON_HEIGHT_DP.dp)
+                .clip(RoundedCornerShape(UIConstants.LOGIN_BUTTON_CORNER_RADIUS_DP.dp)),
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.primary
             ),
@@ -240,13 +242,13 @@ class LoginActivity : AppCompatActivity() {
             if (isLoading) {
                 CircularProgressIndicator(
                     color = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(UIConstants.LOGIN_PROGRESS_INDICATOR_SIZE_DP.dp)
                 )
             } else {
                 Text(
                     text = "Sign in with Google",
                     color = MaterialTheme.colorScheme.onPrimary,
-                    fontSize = 16.sp,
+                    fontSize = UIConstants.LOGIN_BUTTON_TEXT_FONT_SIZE_SP.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
