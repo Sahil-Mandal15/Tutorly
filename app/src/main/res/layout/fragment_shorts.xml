@@ -3,12 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     tools:context=".ui.home.screen.shorts.ShortsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_shorts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Shorts Fragment" />
+        android:overScrollMode="never"
+        android:scrollbarStyle="insideOverlay"
+        tools:listitem="@layout/item_shorts" />
 
 </FrameLayout>

@@ -1,8 +1,10 @@
 package com.sahilm.tutorly.core.di
 
 import com.sahilm.tutorly.data.repository.FeedRepositoryImpl
+import com.sahilm.tutorly.data.repository.ShortsRepositoryImpl
 import com.sahilm.tutorly.data.repository.UserRepositoryImpl
 import com.sahilm.tutorly.domain.repository.FeedRepository
+import com.sahilm.tutorly.domain.repository.ShortsRepository
 import com.sahilm.tutorly.domain.repository.UserRepository
 import dagger.Binds
 import dagger.Module
@@ -25,6 +27,12 @@ abstract class RepositoryModule {
     abstract fun bindUserRepository(
         userRepositoryImpl: UserRepositoryImpl
     ): UserRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindShortsRepository(
+        shortsRepositoryImpl: ShortsRepositoryImpl
+    ): ShortsRepository
 }
 
 
