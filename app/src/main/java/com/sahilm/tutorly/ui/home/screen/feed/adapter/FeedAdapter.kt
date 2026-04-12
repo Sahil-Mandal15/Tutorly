@@ -1,7 +1,6 @@
 package com.sahilm.tutorly.ui.home.screen.feed.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -31,14 +30,19 @@ class FeedAdapter(
         p0: ViewGroup,
         p1: Int
     ): RecyclerView.ViewHolder {
-        val layout = when(p1) {
-            VIEW_TYPE_HEADER -> R.layout.item_feed_header
-            VIEW_TYPE_FEED -> R.layout.item_feed_video
+        val inflater = LayoutInflater.from(p0.context)
+
+        return when(p1) {
+            VIEW_TYPE_HEADER -> {
+                val binding = ItemFeedHeaderBinding.inflate(inflater, p0, false)
+                HeaderViewHolder(binding, clickListener)
+            }
+            VIEW_TYPE_FEED -> {
+                val binding = ItemFeedVideoBinding.inflate(inflater, p0, false)
+                FeedViewHolder(binding, clickListener)
+            }
             else -> throw IllegalArgumentException("Invalid view type")
         }
-
-        val view = LayoutInflater.from(p0.context).inflate(layout, p0, false)
-        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(
@@ -46,14 +50,18 @@ class FeedAdapter(
         p1: Int
     ) {
         val item = getItem(p1)
-        (p0 as ViewHolder).bind(item)
+        when(p0) {
+            is HeaderViewHolder -> p0.bind(item as DataModel.HeaderSection)
+            is FeedViewHolder -> p0.bind(item as DataModel.FeedSection)
+        }
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class HeaderViewHolder(
+        private val binding: ItemFeedHeaderBinding,
+        private val clickListener: FeedItemClickListener
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        private fun bindHeaderSection(item: DataModel.HeaderSection) {
-            val binding = ItemFeedHeaderBinding.bind(itemView)
-
+        fun bind(item: DataModel.HeaderSection) {
             binding.tvUserName.text = item.userName
             Glide.with(itemView.context)
                 .load(item.userProfilePicture)
@@ -64,10 +72,14 @@ class FeedAdapter(
                 clickListener.onMoreBtnClicked()
             }
         }
+    }
 
-        private fun bindFeedSection(item: DataModel.FeedSection) {
-            val binding = ItemFeedVideoBinding.bind(itemView)
+    class FeedViewHolder(
+        private val binding: ItemFeedVideoBinding,
+        private val clickListener: FeedItemClickListener
+    ) : RecyclerView.ViewHolder(binding.root) {
 
+        fun bind(item: DataModel.FeedSection) {
             binding.tvTitle.text = item.title
             binding.tvDuration.text = item.duration
             Glide.with(itemView.context)
@@ -80,13 +92,6 @@ class FeedAdapter(
                     item,
                     bindingAdapterPosition
                 )
-            }
-        }
-
-        fun bind(dataModel: DataModel) {
-            when(dataModel) {
-                is DataModel.FeedSection -> bindFeedSection(dataModel)
-                is DataModel.HeaderSection -> bindHeaderSection(dataModel)
             }
         }
     }
