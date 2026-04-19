@@ -13,22 +13,22 @@ class ShortsRepositoryImpl @Inject constructor() : ShortsRepository {
                 0 -> shorts.add(
                     ShortVideoDomainModel(
                         videoId = "${index + 1}",
-                        videoUrl = "android.resource://com.sahilm.tutorly/raw/dispatcher_shorts",
-                        title = "Kotlin Coroutines: Dispatchers Explained (Part ${(index / 3) + 1})"
+                        videoUrl = "android.resource://com.sahilm.tutorly/raw/clean_architecure_shorts",
+                        title = "Clean Architecture Explained (Part ${(index / 3) + 1})"
                     )
                 )
                 1 -> shorts.add(
                     ShortVideoDomainModel(
                         videoId = "${index + 1}",
-                        videoUrl = "android.resource://com.sahilm.tutorly/raw/interview_shorts",
+                        videoUrl = "android.resource://com.sahilm.tutorly/raw/android_interview_shorts",
                         title = "Interview Tips & Tricks (Part ${(index / 3) + 1})"
                     )
                 )
                 2 -> shorts.add(
                     ShortVideoDomainModel(
                         videoId = "${index + 1}",
-                        videoUrl = "android.resource://com.sahilm.tutorly/raw/mvvm_shorts",
-                        title = "MVVM Architecture Pattern Mastery (Part ${(index / 3) + 1})"
+                        videoUrl = "android.resource://com.sahilm.tutorly/raw/mvvm_vs_mvi_shorts",
+                        title = "MVVM vs MVI Architecture (Part ${(index / 3) + 1})"
                     )
                 )
             }

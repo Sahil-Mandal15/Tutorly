@@ -1,12 +1,12 @@
-# 📱 **Tutorly** - Learn Android Development Seamlessly
+# 📱 **Tutorly** - Learn Through Tutorials Seamlessly
 
-**Tutorly** is a modern Android learning platform designed to help developers master Android fundamentals through structured video tutorials. Built with the latest Android technologies, Tutorly provides an intuitive, responsive experience for consuming educational content.
+**Tutorly** is a modern tutorial platform designed to help learners explore structured topics through video lessons. Built with the latest Android technologies, Tutorly provides an intuitive, responsive experience for consuming educational content.
 
 ## ✨ **Key Features**
 
 - 🎥 **Multi-Format Video Platform** - Support for both long-form educational content and short-form vertical videos
-- 📹 **Long-Form Content** - Curated feed of in-depth tutorials and educational videos with detailed explanations
-- 📱 **Short-Form Video Feed** - TikTok-style vertical video player for quick, bite-sized learning content with auto-play functionality
+- 📹 **Long-Form Content** - Curated feed of in-depth tutorials and lessons with detailed explanations
+- 📱 **Short-Form Video Feed** - Vertical video player for quick, bite-sized learning content with auto-play functionality
 - 🔐 **Secure Authentication** - Seamless Google Sign-In powered by Firebase Authentication
 - 👤 **User Profiles** - Personalized user profiles with profile pictures and authentication persistence
 - 🎬 **Advanced Video Player** - Full-featured ExoPlayer integration with smooth playback, controls, and optimized streaming
@@ -36,7 +36,7 @@
 
 ### **Data & Storage**
 - **Firebase Authentication** - Secure user authentication
-- **DataStore** - Preferences for encrypted, async data storage
+- **DataStore** - Preferences for async local data storage
 - **Paging 3** - Efficient list pagination
 - **Credential Manager** - Modern credential handling with Google ID
 
@@ -134,12 +134,12 @@ Tutorly uses a vibrant Material 3 color palette:
 
 ## 📋 **Content**
 
-Currently features tutorials on:
-- Activities & Activity Lifecycle
-- Tasks, Back Stack & Launch Modes
-- ViewModels & Configuration Changes
-- Context in Android
-- URIs (Unique Resource Identifiers)
+Currently features tutorials across topics like:
+- Programming fundamentals
+- Problem solving and logic building
+- Development workflows and tooling
+- UI/UX concepts
+- Productivity and learning techniques
 - ...and more!
 
 ## 🧪 **Testing**
@@ -167,4 +167,4 @@ For issues, questions, or suggestions, please open an issue on the GitHub reposi
 
 ---
 
-**Built with ❤️ using modern Android development best practices**
+**Built with ❤️ using modern Android app development best practices**
