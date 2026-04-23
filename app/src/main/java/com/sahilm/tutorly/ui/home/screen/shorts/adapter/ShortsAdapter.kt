@@ -9,21 +9,22 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sahilm.tutorly.databinding.ItemShortsBinding
 import com.sahilm.tutorly.domain.model.ShortVideoDomainModel
+import java.lang.ref.WeakReference
 
 class ShortsAdapter : ListAdapter<ShortVideoDomainModel, ShortsAdapter.ShortsViewHolder>(ShortVideoItemCallback) {
 
-    private var exoPlayer: ExoPlayer? = null
+    private var exoPlayer: WeakReference<ExoPlayer>? = null
     private var currentPlayerPosition = -1
     private var currentPlayerViewHolder: ShortsViewHolder? = null
 
     fun setExoPlayer(player: ExoPlayer) {
-        this.exoPlayer = player
+        this.exoPlayer = WeakReference(player)
     }
 
     fun playVideoAtPosition(position: Int) {
         if (position < 0 || position >= itemCount) return
 
-        exoPlayer?.let { player ->
+        exoPlayer?.get()?.let { player ->
             if (currentPlayerPosition != position) {
                 // Detach player from old position first
                 val previousPosition = currentPlayerPosition
@@ -43,6 +44,10 @@ class ShortsAdapter : ListAdapter<ShortVideoDomainModel, ShortsAdapter.ShortsVie
                 notifyItemChanged(position)
             }
         }
+    }
+
+    fun releaseExoPlayerReference() {
+        exoPlayer?.clear()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShortsViewHolder {
@@ -66,7 +71,7 @@ class ShortsAdapter : ListAdapter<ShortVideoDomainModel, ShortsAdapter.ShortsVie
                 
                 if (shouldAttachPlayer) {
                     // Attach player only if this is the current position
-                    exoPlayer?.let { player ->
+                    exoPlayer?.get()?.let { player ->
                         playerView.player = player
                         currentPlayerViewHolder = this@ShortsViewHolder
                     }
@@ -77,7 +82,7 @@ class ShortsAdapter : ListAdapter<ShortVideoDomainModel, ShortsAdapter.ShortsVie
 
                 // Add click listener to toggle play/pause
                 playerView.setOnClickListener {
-                    exoPlayer?.let { player ->
+                    exoPlayer?.get()?.let { player ->
                         if (player.isPlaying) {
                             player.pause()
                         } else {

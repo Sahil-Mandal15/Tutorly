@@ -122,7 +122,8 @@ class ShortsFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        fun newInstance() = ShortsFragment()
+    override fun onDestroy() {
+        super.onDestroy()
+        shortsAdapter.releaseExoPlayerReference()
     }
 }
